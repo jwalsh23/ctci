@@ -26,7 +26,8 @@ func IsUniqueNoExtraDataStructure(s string) bool {
 	var existsInt int
 	for _, c := range s {
 		val := c - 'a'
-		if (existsInt & 1 << val) > 0 {
+		vv := 1 << val
+		if (existsInt & vv) > 0 {
 			return false
 		}
 		existsInt |= 1 << val

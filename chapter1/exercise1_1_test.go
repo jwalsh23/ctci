@@ -48,7 +48,7 @@ func TestIsUniqueNoExtraDataStructure(t *testing.T) {
 		assert.False(t, isUnique)
 	})
 	t.Run("is unique", func(t *testing.T) {
-		input := "abcdef63g/jk"
+		input := "abcdefjk"
 
 		isUnique := chapter1.IsUniqueNoExtraDataStructure(input)
 
