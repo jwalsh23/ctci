@@ -23,5 +23,13 @@ func IsUniqueArray(s string) bool {
 }
 
 func IsUniqueNoExtraDataStructure(s string) bool {
-	return false
+	var existsInt int
+	for _, c := range s {
+		val := c - 'a'
+		if (existsInt & 1 << val) > 0 {
+			return false
+		}
+		existsInt |= 1 << val
+	}
+	return true
 }
