@@ -1,6 +1,7 @@
 package chapter1_test
 
 import (
+	"github.com/jwalsh23/ctci/chapter1"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
