@@ -18,3 +18,16 @@ func TestPalindromePermutation(t *testing.T) {
 		assert.False(t, chapter1.PalindromePermutation(input))
 	})
 }
+
+func TestPalindromePermutationBitVector(t *testing.T) {
+	t.Run("is permutation", func(t *testing.T) {
+		input := "Tact Coa"
+
+		assert.True(t, chapter1.PalindromePermutationBitVector(input))
+	})
+	t.Run("is not permutation", func(t *testing.T) {
+		input := "actc"
+
+		assert.False(t, chapter1.PalindromePermutationBitVector(input))
+	})
+}
