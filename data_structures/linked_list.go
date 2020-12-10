@@ -2,11 +2,11 @@ package data_structures
 
 type Node struct {
 	Value int
-	Next *Node
+	Next  *Node
 }
 
 type LinkedList struct {
-	n *Node
+	n     *Node
 	count int
 }
 
@@ -50,12 +50,12 @@ func (l *LinkedList) DeleteValue(value int) {
 }
 
 func (l *LinkedList) DeleteIndex(index int) {
-	if index > l.count -1 {
+	if index > l.count-1 {
 		return
 	}
 	n := l.n
 	if index == 0 {
-		l.count --
+		l.count--
 		l.n = n.Next
 		return
 	}
@@ -71,7 +71,19 @@ func (l *LinkedList) DeleteIndex(index int) {
 	}
 }
 
+func (l *LinkedList) Slice() []int {
+	var nodeSlc []int
+	if l == nil || l.n == nil {
+		return nodeSlc
+	}
+	n := l.n
+	for n != nil {
+		nodeSlc = append(nodeSlc, n.Value)
+		n = n.Next
+	}
+	return nodeSlc
+}
+
 func (l *LinkedList) Empty() bool {
 	return l == nil || l.count == 0
 }
-

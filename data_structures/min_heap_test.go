@@ -1,8 +1,9 @@
 package data_structures
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestIntMinHeap_Add(t *testing.T) {
@@ -17,7 +18,7 @@ func TestIntMinHeap_Add(t *testing.T) {
 		testObject.Add(32)
 
 		expected := IntMinHeap{
-			slc: []int{0,5,10,20,15,16, 30, 32},
+			slc: []int{0, 5, 10, 20, 15, 16, 30, 32},
 		}
 
 		assert.Equal(t, expected, testObject)
@@ -35,7 +36,7 @@ func TestIntMinHeap_Add(t *testing.T) {
 		testObject.Add(19)
 
 		expected := IntMinHeap{
-			slc: []int{0,4,5,20,10,16, 30, 32, 15},
+			slc: []int{0, 4, 5, 20, 10, 16, 30, 32, 15, 19},
 		}
 
 		assert.Equal(t, expected, testObject)
