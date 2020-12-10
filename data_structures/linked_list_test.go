@@ -39,7 +39,7 @@ func TestLinkedList_Empty(t *testing.T) {
 	})
 }
 func TestLinkedList_DeleteValue(t *testing.T) {
-	t.Run("does not delete when cannot find value", func(t *testing.T) {
+	t.Run("does not deleteNode when cannot find value", func(t *testing.T) {
 		expected := LinkedList{n: &Node{Value: 5, Next: &Node{Value: 10}}, count: 2}
 
 		var testObject LinkedList
@@ -73,7 +73,7 @@ func TestLinkedList_DeleteValue(t *testing.T) {
 	})
 }
 func TestLinkedList_DeleteIndex(t *testing.T) {
-	t.Run("does not delete when cannot find index", func(t *testing.T) {
+	t.Run("does not deleteNode when cannot find index", func(t *testing.T) {
 		expected := LinkedList{n: &Node{Value: 5, Next: &Node{Value: 10}}, count: 2}
 
 		var testObject LinkedList
