@@ -6,8 +6,8 @@ type Node struct {
 }
 
 type LinkedList struct {
-	n     *Node
-	count int
+	N     *Node
+	Count int
 }
 
 func (l *LinkedList) Add(value int) {
@@ -15,12 +15,12 @@ func (l *LinkedList) Add(value int) {
 		return
 	}
 	node := &Node{Value: value}
-	l.count++
-	if l.n == nil {
-		l.n = node
+	l.Count++
+	if l.N == nil {
+		l.N = node
 		return
 	}
-	n := l.n
+	n := l.N
 	for n.Next != nil {
 		n = n.Next
 	}
@@ -28,42 +28,42 @@ func (l *LinkedList) Add(value int) {
 }
 
 func (l *LinkedList) DeleteValue(value int) {
-	if l.n == nil {
+	if l.N == nil {
 		return
 	}
-	n := l.n
-	if l.n.Value == value {
-		l.n = n.Next
-		l.count--
+	n := l.N
+	if l.N.Value == value {
+		l.N = n.Next
+		l.Count--
 	}
 	for n.Next != nil {
 		if n.Next.Value == value {
-			l.count--
+			l.Count--
 			n.Next = n.Next.Next
 			continue
 		}
 		n = n.Next
 	}
-	if l.count == 0 {
+	if l.Count == 0 {
 		*l = LinkedList{}
 	}
 }
 
 func (l *LinkedList) DeleteIndex(index int) {
-	if index > l.count-1 {
+	if index > l.Count-1 {
 		return
 	}
-	n := l.n
+	n := l.N
 	if index == 0 {
-		l.count--
-		l.n = n.Next
+		l.Count--
+		l.N = n.Next
 		return
 	}
 	count := 0
 	for n.Next != nil {
 		count++
 		if count == index {
-			l.count--
+			l.Count--
 			n.Next = n.Next.Next
 			return
 		}
@@ -73,10 +73,10 @@ func (l *LinkedList) DeleteIndex(index int) {
 
 func (l *LinkedList) Slice() []int {
 	var nodeSlc []int
-	if l == nil || l.n == nil {
+	if l == nil || l.N == nil {
 		return nodeSlc
 	}
-	n := l.n
+	n := l.N
 	for n != nil {
 		nodeSlc = append(nodeSlc, n.Value)
 		n = n.Next
@@ -85,5 +85,5 @@ func (l *LinkedList) Slice() []int {
 }
 
 func (l *LinkedList) Empty() bool {
-	return l == nil || l.count == 0
+	return l == nil || l.Count == 0
 }

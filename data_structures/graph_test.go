@@ -33,10 +33,10 @@ func TestIntGraph_AddRelation(t *testing.T) {
 
 	expected := IntGraph{
 		vertexEdge: map[int]*LinkedList{
-			1: {n: &Node{Value: 7}, count: 1},
-			5: {n: &Node{Value: 6}, count: 1},
+			1: {N: &Node{Value: 7}, Count: 1},
+			5: {N: &Node{Value: 6}, Count: 1},
 			6: {},
-			7: {n: &Node{Value: 1}, count: 1},
+			7: {N: &Node{Value: 1}, Count: 1},
 		},
 	}
 
