@@ -1,87 +1,87 @@
 package data_structures
 
-type treeNode struct{
+type TreeNode struct {
 	Value int
-	left *treeNode
-	right *treeNode
+	Left  *TreeNode
+	Right *TreeNode
 }
 
 type BST struct {
-	root *treeNode
+	Root *TreeNode
 }
 
-func(t *BST) Insert(val int) {
-	if t.root == nil {
-		t.root = &treeNode{Value: val}
+func (t *BST) Insert(val int) {
+	if t.Root == nil {
+		t.Root = &TreeNode{Value: val}
 		return
 	}
-	insert(t.root, val)
+	insert(t.Root, val)
 }
 
-func insert(parent *treeNode, val int) {
+func insert(parent *TreeNode, val int) {
 	if parent == nil {
-		parent = &treeNode{Value: val}
+		parent = &TreeNode{Value: val}
 		return
 	}
 	if parent.Value == val {
 		return
 	}
 	if parent.Value < val {
-		if parent.right == nil {
-			parent.right = &treeNode{Value: val}
+		if parent.Right == nil {
+			parent.Right = &TreeNode{Value: val}
 			return
 		}
-		insert(parent.right, val)
+		insert(parent.Right, val)
 	} else {
-		if parent.left == nil {
-			parent.left = &treeNode{Value: val}
+		if parent.Left == nil {
+			parent.Left = &TreeNode{Value: val}
 			return
 		}
-		insert(parent.left, val)
+		insert(parent.Left, val)
 	}
 }
 
-func(t *BST) Delete(val int) {
-	if t.root == nil {
+func (t *BST) Delete(val int) {
+	if t.Root == nil {
 		return
 	}
-	t.root = deleteNode(t.root, val)
+	t.Root = deleteNode(t.Root, val)
 }
 
-func deleteNode(node *treeNode, val int) *treeNode {
+func deleteNode(node *TreeNode, val int) *TreeNode {
 	if node == nil {
 		return nil
 	}
- 	if node.Value < val {
-		node.right = deleteNode(node.right, val)
+	if node.Value < val {
+		node.Right = deleteNode(node.Right, val)
 		return node
-	} else if node.Value > val{
-		node.left = deleteNode(node.left, val)
+	} else if node.Value > val {
+		node.Left = deleteNode(node.Left, val)
 		return node
 	} else {
-		if node.left == nil  && node.right == nil {
+		if node.Left == nil && node.Right == nil {
 			node = nil
 			return node
 		}
-		if node.left == nil {
-			node = node.right
+		if node.Left == nil {
+			node = node.Right
 			return node
-		} else if node.right == nil {
-			node = node.left
+		} else if node.Right == nil {
+			node = node.Left
 			return node
 		} else {
-			minNode := findMinParent(node.right)
-			node.Value = minNode.left.Value
-			minNode.left = nil
+			minNode := findMinParent(node.Right)
+			node.Value = minNode.Left.Value
+			minNode.Left = nil
 			return node
 		}
 	}
 }
 
-func findMinParent(node *treeNode) *treeNode {
-	if node.left != nil {
-		if node.left.left != nil {
-			return findMinParent(node.left)
+func findMinParent(node *TreeNode) *TreeNode {
+	if node.Left != nil {
+		if node.Left.Left != nil {
+			return findMinParent(node.Left)
 		}
 	}
 	return node

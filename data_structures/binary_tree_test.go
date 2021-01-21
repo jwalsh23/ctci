@@ -1,8 +1,9 @@
 package data_structures
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBST_Insert(t *testing.T) {
@@ -15,14 +16,14 @@ func TestBST_Insert(t *testing.T) {
 		testObject.Insert(4)
 
 		expected := BST{
-			root: &treeNode{
+			Root: &TreeNode{
 				Value: 5,
-				left:  &treeNode{
+				Left: &TreeNode{
 					Value: 2,
-					left:  nil,
-					right: &treeNode{Value: 4},
+					Left:  nil,
+					Right: &TreeNode{Value: 4},
 				},
-				right: &treeNode{Value: 10},
+				Right: &TreeNode{Value: 10},
 			},
 		}
 		assert.Equal(t, expected, testObject)
@@ -38,21 +39,21 @@ func TestBST_Insert(t *testing.T) {
 		testObject.Insert(10)
 
 		expected := BST{
-			root: &treeNode{
+			Root: &TreeNode{
 				Value: 5,
-				left:  &treeNode{
+				Left: &TreeNode{
 					Value: 2,
-					left:  nil,
-					right: &treeNode{Value: 4},
+					Left:  nil,
+					Right: &TreeNode{Value: 4},
 				},
-				right: &treeNode{Value: 10},
+				Right: &TreeNode{Value: 10},
 			},
 		}
 		assert.Equal(t, expected, testObject)
 	})
 }
 func TestBST_Delete(t *testing.T) {
-	t.Run("node with only right node", func(t *testing.T) {
+	t.Run("node with only Right node", func(t *testing.T) {
 		t.Run("deletes child", func(t *testing.T) {
 			testObject := BST{}
 
@@ -61,7 +62,7 @@ func TestBST_Delete(t *testing.T) {
 			testObject.Delete(10)
 
 			expected := BST{
-				root: &treeNode{
+				Root: &TreeNode{
 					Value: 5,
 				},
 			}
@@ -75,14 +76,14 @@ func TestBST_Delete(t *testing.T) {
 			testObject.Delete(5)
 
 			expected := BST{
-				root: &treeNode{
+				Root: &TreeNode{
 					Value: 10,
 				},
 			}
 			assert.Equal(t, expected, testObject)
 		})
 	})
-	t.Run("node with only left node", func(t *testing.T) {
+	t.Run("node with only Left node", func(t *testing.T) {
 		t.Run("deletes child", func(t *testing.T) {
 			testObject := BST{}
 
@@ -91,7 +92,7 @@ func TestBST_Delete(t *testing.T) {
 			testObject.Delete(4)
 
 			expected := BST{
-				root: &treeNode{
+				Root: &TreeNode{
 					Value: 5,
 				},
 			}
@@ -105,13 +106,13 @@ func TestBST_Delete(t *testing.T) {
 			testObject.Delete(5)
 
 			expected := BST{
-				root: &treeNode{
+				Root: &TreeNode{
 					Value: 4,
 				},
 			}
 			assert.Equal(t, expected, testObject)
 		})
-		t.Run("deletes parent with greatest on left side", func(t *testing.T) {
+		t.Run("deletes parent with greatest on Left side", func(t *testing.T) {
 			testObject := BST{}
 
 			testObject.Insert(5)
@@ -120,42 +121,42 @@ func TestBST_Delete(t *testing.T) {
 			testObject.Delete(5)
 
 			expected := BST{
-				root: &treeNode{
+				Root: &TreeNode{
 					Value: 3,
-					right: &treeNode{Value: 4},
+					Right: &TreeNode{Value: 4},
 				},
 			}
 			assert.Equal(t, expected, testObject)
 		})
 	})
-	t.Run("node with both left and right child", func(t *testing.T) {
-			testObject := BST{}
+	t.Run("node with both Left and Right child", func(t *testing.T) {
+		testObject := BST{}
 
-			testObject.Insert(5)
-			testObject.Insert(3)
-			testObject.Insert(4)
-			testObject.Insert(10)
-			testObject.Insert(8)
-			testObject.Insert(9)
-			testObject.Insert(7)
-			testObject.Delete(5)
+		testObject.Insert(5)
+		testObject.Insert(3)
+		testObject.Insert(4)
+		testObject.Insert(10)
+		testObject.Insert(8)
+		testObject.Insert(9)
+		testObject.Insert(7)
+		testObject.Delete(5)
 
-			expected := BST{
-				root: &treeNode{
-					Value: 7,
-					right: &treeNode{
-						Value: 10,
-						left: &treeNode{
-							Value: 8,
-							right: &treeNode{Value: 9},
-						},
-					},
-					left: &treeNode{
-						Value: 3,
-						right: &treeNode{Value: 4},
+		expected := BST{
+			Root: &TreeNode{
+				Value: 7,
+				Right: &TreeNode{
+					Value: 10,
+					Left: &TreeNode{
+						Value: 8,
+						Right: &TreeNode{Value: 9},
 					},
 				},
-			}
-			assert.Equal(t, expected, testObject)
+				Left: &TreeNode{
+					Value: 3,
+					Right: &TreeNode{Value: 4},
+				},
+			},
+		}
+		assert.Equal(t, expected, testObject)
 	})
 }
